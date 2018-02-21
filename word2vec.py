@@ -21,6 +21,8 @@ def learnVocabFromTrainFile(train, mincount):
                     vocab.append([word, 0])
                     vocab_hash[word] = len(vocab_hash)
                 vocab[vocab_hash[word]][1] += 1
+            tmpwords.append('</s>')
+            vocab[vocab_hash['</s>']][1] += 1
     vocab[1:] = sorted(vocab[1:], key=lambda x: x[1], reverse=True)
     vocab_hash = dict()
     while vocab[len(vocab) - 1][1] < mincount and len(vocab) > 1:
